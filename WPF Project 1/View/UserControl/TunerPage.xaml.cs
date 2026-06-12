@@ -11,7 +11,7 @@
 
             NAudioClass NAclass = new NAudioClass();
 
-            NAclass.updateText(txtInput);
+            
         }
     }
 }
