@@ -15,7 +15,7 @@ namespace WPF_Project_1
             waveIn.DeviceNumber = 1;
             waveIn.WaveFormat = new WaveFormat(44100, 16, 1);
 
-            waveIn.DataAvailable += OnDataAvailable();
+            //waveIn.DataAvailable += OnDataAvailable();
 
             try
             {

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Project_1"
         xmlns:userControls="clr-namespace:WPF_Project_1.View.UserControl"
+        xmlns:fa="clr-namespace:FontAwesome.Sharp;assembly=FontAwesome.Sharp"
        
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1080">
@@ -21,11 +22,20 @@
                 <ColumnDefinition Width="200px"/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <userControls:SideBar/>
+            <Rectangle Grid.ColumnSpan="2">
+                <Rectangle.Fill>
+                    <RadialGradientBrush Center="0.83,0.4" RadiusX="0.9" RadiusY="0.7">
+                        <GradientStop Color="#334155"
+                Offset="0"/>
+                        <GradientStop Color="#0F172A"
+                Offset="1"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <userControls:SideBar Panel.ZIndex="1"/>
 
             <userControls:TunerPage Grid.Column="1"/>
             
-            <Image Height="30px" Width="30px" Source="/Assets/Icons/guitar.png"/>
         </Grid>
         
     </Grid>

@@ -24,5 +24,7 @@ namespace WPF_Project_1.View.UserControl
         {
             InitializeComponent();
         }
+
+      
     }
 }

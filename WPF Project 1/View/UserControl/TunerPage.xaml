@@ -4,19 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_Project_1.View.UserControl"
+             xmlns:fa="clr-namespace:FontAwesome.Sharp;assembly=FontAwesome.Sharp"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.Background>
-            <RadialGradientBrush Center="0.5,0.4" RadiusX="0.9" RadiusY="0.7">
-                <GradientStop Color="#334155"
-                      Offset="0"/>
-                <GradientStop Color="#0F172A"
-                      Offset="1"/>
-            </RadialGradientBrush>
-        </Grid.Background>
+    <Grid Background="Transparent">
+        
 
-        <TextBox x:Name="txtInput" Height="60px" Width="300px"  IsReadOnly="true" 
-                 AcceptsReturn="true" VerticalScrollBarVisibility="Auto"/>
+        
+
+        <TextBox x:Name="txtInput" Height="60px" Width="300px"  
+                 AcceptsReturn="true" VerticalScrollBarVisibility="Auto" Text="{Binding BoundText, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Name="btnSet" HorizontalAlignment="center" VerticalAlignment="center" 
+                Height="30px" Width="100px" Margin="0,100,0,0" Content="Set"
+                Click="btnSet_Click"/>
+        <TextBlock Name="tbResult" Height="50px" Width="230px" VerticalAlignment="center" 
+                   Background="gray" HorizontalAlignment="left" />
+        
     </Grid>
 </UserControl>
