@@ -19,8 +19,8 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200px"/>
-                <ColumnDefinition />
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Rectangle Grid.ColumnSpan="2">
                 <Rectangle.Fill>
@@ -32,10 +32,84 @@
                     </RadialGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
-            <userControls:SideBar Panel.ZIndex="1"/>
 
-            <userControls:TunerPage Grid.Column="1"/>
+            <Border Background="#80000000" Panel.ZIndex="1" Width="200" HorizontalAlignment="left">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=btnShowSidePanel}" Value="True">
+
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Width" To="0" Duration="0:0:0.3">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CubicEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+
+                                <DataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Width" To="200" Duration="0:0:0.3">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CubicEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.ExitActions>
+
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                    
+                </Border.Style>
+                <Grid>
+                <userControls:SideBar />
+                    <ToggleButton Style="{StaticResource ShowSidePanelButtonStyle}"  Name="btnShowSidePanel" Grid.Column="1" >
+                    <Image Height="auto" Width="auto" Source="/Assets/Icons/right-arrow.png"
+                    Panel.ZIndex="6"/>
+                    <ToggleButton.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(ToggleButton.Background).(SolidColorBrush.Color)" 
+                                 To="Transparent" 
+                                 Duration="0:0:0.3">
+                                        <ColorAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </ColorAnimation.EasingFunction>
+                                    </ColorAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(ToggleButton.Background).(SolidColorBrush.Color)" 
+                                 To="#80000000" 
+                                 Duration="0:0:0.3">
+                                        <ColorAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </ColorAnimation.EasingFunction>
+                                    </ColorAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                   
+                </ToggleButton.Triggers>
+                </ToggleButton>
+                </Grid>
+            </Border>
             
+            <userControls:TunerPage Grid.Column="1" />
+            
+
         </Grid>
         
     </Grid>

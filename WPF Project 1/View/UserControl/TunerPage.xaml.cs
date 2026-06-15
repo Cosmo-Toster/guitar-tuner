@@ -35,18 +35,7 @@ namespace WPF_Project_1.View.UserControl
             }
         }
 
-        private void btnSet_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            bool? success = fileDialog.ShowDialog();
-
-            if (success == true)
-            {
-                string filePath = fileDialog.FileName;
-
-                tbResult.Text = filePath;
-            }
-        }
+       
 
         private void OnPropertyChanged( [CallerMemberName] string propertyName = null)
         {

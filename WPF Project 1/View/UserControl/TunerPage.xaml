@@ -8,17 +8,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="Transparent">
-        
 
-        
 
-        <TextBox x:Name="txtInput" Height="60px" Width="300px"  
-                 AcceptsReturn="true" VerticalScrollBarVisibility="Auto" Text="{Binding BoundText, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button Name="btnSet" HorizontalAlignment="center" VerticalAlignment="center" 
-                Height="30px" Width="100px" Margin="0,100,0,0" Content="Set"
-                Click="btnSet_Click"/>
-        <TextBlock Name="tbResult" Height="50px" Width="230px" VerticalAlignment="center" 
-                   Background="gray" HorizontalAlignment="left" />
-        
+
+
+        <Grid Grid.Column="1" Background="White">
+
+            
+
+            <TextBlock Text="Головний вміст розтягнеться сюди" 
+           HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        </Grid>
+
     </Grid>
 </UserControl>

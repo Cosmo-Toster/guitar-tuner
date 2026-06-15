@@ -8,97 +8,11 @@
              d:DesignHeight="450" Width="200">
     <Grid Background="Transparent">
 
-
-
-
-        <Grid Background="#80000000">
-            <Grid.RenderTransform>
-                <TranslateTransform X="0" Y="0"/>
-            </Grid.RenderTransform>
-            <Grid.Style>
-                <Style TargetType="Grid">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsChecked, ElementName=btnShowSidePanel}" Value="True">
-
-                            <DataTrigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                                    To="-200" Duration="0:0:0.5">
-                                        <DoubleAnimation.EasingFunction>
-                                            <CubicEase EasingMode="EaseOut"/>
-                                        </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </DataTrigger.EnterActions>
-
-                            <DataTrigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                                    To="0" Duration="0:0:0.5">
-                                        <DoubleAnimation.EasingFunction>
-                                            <CubicEase EasingMode="EaseOut"/>
-                                        </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </DataTrigger.ExitActions>
-
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-
-            <ToggleButton Name="btnShowSidePanel" Grid.Column="1" Height="30px" Width="50px" VerticalAlignment="Top" 
-            HorizontalAlignment="right" BorderThickness="0" Background="#80000000"
-               Margin="-50,15">
-                <Image Height="auto" Width="auto" Source="/Assets/Icons/right-arrow.png"
-                Panel.ZIndex="6"/>
-                <ToggleButton.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ColorAnimation Storyboard.TargetProperty="(ToggleButton.Background).(SolidColorBrush.Color)" 
-                                         To="Transparent" 
-                                         Duration="0:0:0.3">
-                                    <ColorAnimation.EasingFunction>
-                                        <CubicEase EasingMode="EaseOut"/>
-                                    </ColorAnimation.EasingFunction>
-                                </ColorAnimation>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ColorAnimation Storyboard.TargetProperty="(ToggleButton.Background).(SolidColorBrush.Color)" 
-                                         To="#80000000" 
-                                         Duration="0:0:0.3">
-                                    <ColorAnimation.EasingFunction>
-                                        <CubicEase EasingMode="EaseOut"/>
-                                    </ColorAnimation.EasingFunction>
-                                </ColorAnimation>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-
-                </ToggleButton.Triggers>
-            </ToggleButton>
-
-            <StackPanel>
-                <Button Height="50px" Background="Transparent"
-             Content="ТЮНЕР" Foreground="white" BorderBrush="white"
-             FontSize="33" Margin="5,5,5,0"/>
-                <Button Height="50px" Background="Transparent"
-             Content="TUNA" Foreground="white" BorderBrush="white"
-             FontSize="33" Margin="5,5,5,0"/>
-                <Button Height="50px" Background="Transparent"
-             Content="AAAAA" Foreground="white" BorderBrush="white"
-             FontSize="33" Margin="5,5,5,0"/>
-            </StackPanel>
-        </Grid>
+        
+        <StackPanel>
+            <Button Style="{StaticResource SidePanelButtonStyle}" Content="ТЮНЕР"  />
+            <Button Style="{StaticResource SidePanelButtonStyle}" Content="TUNA" />
+            <Button Style="{StaticResource SidePanelButtonStyle}" Content="A_A_A" />
+        </StackPanel>
     </Grid>
 </UserControl>
