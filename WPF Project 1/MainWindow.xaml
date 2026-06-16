@@ -9,19 +9,30 @@
        
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1080">
+    
+    
+    
     <Grid>
         <Grid.RowDefinitions>
+            <!--СМУГА 1 "Header" хедер сайту  -->
             <RowDefinition  Height="70px"/>
+            <!--СМУГА 2 Головна частина сайту  -->
             <RowDefinition/>
         </Grid.RowDefinitions>
-
+        
+        <!--Контент хедера  ПОЧАТОК-->
         <userControls:MenuBar/>
+        <!--Контент хедера  КІНЕЦЬ-->
 
+        <!--Контент робочої частини  ПОЧАТОК-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
+                <!--КОЛОНКА 1 Бокове меню-->
                 <ColumnDefinition Width="auto"/>
+                <!--КОЛОНКА 2 Робоча площина  -->
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <!-- Градієнтний фон ПОЧАТОК -->
             <Rectangle Grid.ColumnSpan="2">
                 <Rectangle.Fill>
                     <RadialGradientBrush Center="0.83,0.4" RadiusX="0.9" RadiusY="0.7">
@@ -32,8 +43,11 @@
                     </RadialGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
+            <!-- Градієнтний фон КІНЕЦЬ -->
 
+            <!-- Бокове меню ПОЧАТОК -->
             <Border Background="#80000000" Panel.ZIndex="1" Width="200" HorizontalAlignment="left">
+                <!-- Анімація бокового меню ПОЧАТОК -->
                 <Border.Style>
                     <Style TargetType="Border">
                         <Style.Triggers>
@@ -68,8 +82,15 @@
                     </Style>
                     
                 </Border.Style>
+                <!-- Анімація бокового меню КІНЕЦЬ -->
+
+                <!-- Контент меню ПОЧАТОК -->
                 <Grid>
+                <!--Контент бокового меню  ПОЧАТОК-->
                 <userControls:SideBar />
+                <!--Контент бокового меню  КІНЕЦЬ-->
+
+                    <!--Кнопка відкриття бокового меню ПОЧАТОК-->
                     <ToggleButton Style="{StaticResource ShowSidePanelButtonStyle}"  Name="btnShowSidePanel" Grid.Column="1" >
                     <Image Height="auto" Width="auto" Source="/Assets/Icons/right-arrow.png"
                     Panel.ZIndex="6"/>
@@ -104,13 +125,18 @@
                    
                 </ToggleButton.Triggers>
                 </ToggleButton>
+                    <!--Кнопка відкриття бокового меню КІНЕЦЬ-->
                 </Grid>
+                <!-- Контент меню КІНЕЦЬ -->
             </Border>
-            
-            <userControls:TunerPage Grid.Column="1" />
-            
+            <!-- Бокове меню КІНЕЦЬ -->
 
+            <!-- Робочі юзер-контроли  ПОЧАТОК-->
+            
+            <!-- Робочі юзер-контроли  КІНЕЦЬ-->
+            <userControls:TunerPage Grid.Column="1"/>
         </Grid>
+        <!--Контент робочої частини КІНЕЦЬ-->
         
     </Grid>
 </Window>

@@ -7,17 +7,30 @@
              xmlns:fa="clr-namespace:FontAwesome.Sharp;assembly=FontAwesome.Sharp"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Transparent">
+    <Grid Background="White">
 
 
 
 
         <Grid Grid.Column="1" Background="White">
-
+            <TextBlock Text="{Binding CurrentFrequency}" Height="50px" Width="200px"
+            HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
             
+            
+          
 
-            <TextBlock Text="Головний вміст розтягнеться сюди" 
-           HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock  VerticalAlignment="Bottom" HorizontalAlignment="center"
+                TextWrapping="Wrap" FontSize="19"
+                Width="auto">
+            Струни повинні мати таку герцовку:<LineBreak/>
+                6-та струна (E / Мі) – 82.41 Гц<LineBreak/>
+                5-та струна (A / Ля) – 110.00 Гц <LineBreak/>
+                4-та струна (D / Ре) – 146.83 Гц<LineBreak/>
+                3-я струна (G / Соль) – 196.00 Гц <LineBreak/>
+                2-а струна (B / Сі) – 246.94 Гц<LineBreak/>
+                1-а струна (e / Мі) – 329.63 Гц)
+             </TextBlock>
+
         </Grid>
 
     </Grid>

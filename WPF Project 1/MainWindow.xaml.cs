@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using static WPF_Project_1.NAudioClass;
+
 
 namespace WPF_Project_1
 {

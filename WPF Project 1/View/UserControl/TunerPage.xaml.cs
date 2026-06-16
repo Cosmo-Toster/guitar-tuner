@@ -9,37 +9,16 @@ namespace WPF_Project_1.View.UserControl
     /// <summary>
     /// Interaction logic for TunerPage.xaml
     /// </summary>
-    public partial class TunerPage : System.Windows.Controls.UserControl, INotifyPropertyChanged
+    public partial class TunerPage : System.Windows.Controls.UserControl
     {
         public TunerPage()
         {
-            DataContext = this;
             InitializeComponent();
 
-            NAudioClass NAclass = new NAudioClass();
+            this.DataContext = new TunerViewModel();
 
-            
+
         }
 
-        private string boundText;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public string BoundText
-        {
-            get { return boundText; }
-            set 
-            {
-                boundText = value;
-                OnPropertyChanged();
-            }
-        }
-
-       
-
-        private void OnPropertyChanged( [CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }
