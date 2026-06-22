@@ -27,12 +27,14 @@ namespace WPF_Project_1
                 _waveIn.WaveFormat = new WaveFormat(44100, 16, 1);
                 _waveIn.DataAvailable += OnDataAvailable;
                 _waveIn.StartRecording();
-                Debug.WriteLine($"ЗАпис почато");
+
+                
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Помилка: {ex.Message}");
             }
+
         }
 
         public void StopGenerating()
@@ -40,8 +42,8 @@ namespace WPF_Project_1
             if (_waveIn != null)
             {
                 _waveIn.StopRecording();
-                _waveIn.DataAvailable -= OnDataAvailable; // Відписуємося
-                _waveIn.Dispose(); // Звільняємо мікрофон для інших програм
+                _waveIn.DataAvailable -= OnDataAvailable; 
+                _waveIn.Dispose();
                 _waveIn = null;
                 Debug.WriteLine("Запис зупинено");
             }
@@ -62,20 +64,21 @@ namespace WPF_Project_1
 
             float rms = (float)Math.Sqrt(sumOfSquares / sampleCount);
 
-            if (rms < 0.01f)
+            if (rms < 0.008f)
             {
-                Debug.Write("\rОчікування звуку...".PadRight(40));
                 return;
             }
 
+            
             float frequency = FindFundamentalFrequency(samples, 44100);
 
-            if (frequency > 60 && frequency < 1200)
-            {
-                string note = GetNoteName(frequency);
-                Debug.Write($"\rЗвучить: [ {note} ]  Частота: {frequency:0.0} Гц".PadRight(40));
+            //if (frequency > 60 && frequency < 1200)
+            //{/
+                //string note = GetNoteName(frequency);
+                //Debug.Write($"\rЗвучить: [ {note} ]  Частота: {frequency:0.0} Гц".PadRight(40));
                 ChangedFrequency?.Invoke(this, frequency);
-            }
+
+            //}
         }
 
         static float FindFundamentalFrequency(float[] samples, int sampleRate)
@@ -103,7 +106,9 @@ namespace WPF_Project_1
 
             if (bestLag == 0) return 0;
 
-            return (float)sampleRate / bestLag;
+
+            return (float)Math.Round(((float)sampleRate / bestLag),2);
+            
         }
 
         static string GetNoteName(float frequency)

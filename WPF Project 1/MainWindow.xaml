@@ -9,9 +9,6 @@
        
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1080">
-    
-    
-    
     <Grid>
         <Grid.RowDefinitions>
             <!--СМУГА 1 "Header" хедер сайту  -->
@@ -19,6 +16,20 @@
             <!--СМУГА 2 Головна частина сайту  -->
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <!-- Градієнтний фон ПОЧАТОК -->
+        <Viewbox Stretch="UniformToFill" ClipToBounds="True" Grid.Row="1">
+            <Rectangle   Width="1000" Height="1000">
+                <Rectangle.Fill>
+                    <RadialGradientBrush Center="0.5,0.5" RadiusX="0.7" RadiusY="0.7">
+                        <GradientStop Color="#4e5d73"
+        Offset="0"/>
+                        <GradientStop Color="#0F172A"
+        Offset="1"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Viewbox>
+        <!-- Градієнтний фон КІНЕЦЬ -->
         
         <!--Контент хедера  ПОЧАТОК-->
         <userControls:MenuBar/>
@@ -32,18 +43,7 @@
                 <!--КОЛОНКА 2 Робоча площина  -->
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <!-- Градієнтний фон ПОЧАТОК -->
-            <Rectangle Grid.ColumnSpan="2">
-                <Rectangle.Fill>
-                    <RadialGradientBrush Center="0.83,0.4" RadiusX="0.9" RadiusY="0.7">
-                        <GradientStop Color="#334155"
-                Offset="0"/>
-                        <GradientStop Color="#0F172A"
-                Offset="1"/>
-                    </RadialGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
-            <!-- Градієнтний фон КІНЕЦЬ -->
+            
 
             <!-- Бокове меню ПОЧАТОК -->
             <Border Background="#80000000" Panel.ZIndex="1" Width="200" HorizontalAlignment="left">
@@ -134,7 +134,7 @@
             <!-- Робочі юзер-контроли  ПОЧАТОК-->
             
             <!-- Робочі юзер-контроли  КІНЕЦЬ-->
-            <userControls:TunerPage Grid.Column="1"/>
+            <userControls:TunerPage Grid.Column="1" />
         </Grid>
         <!--Контент робочої частини КІНЕЦЬ-->
         

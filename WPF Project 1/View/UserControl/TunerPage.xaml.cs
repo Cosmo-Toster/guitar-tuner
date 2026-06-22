@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
+
 //using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -20,5 +22,19 @@ namespace WPF_Project_1.View.UserControl
 
         }
 
+        private void AnyButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (tbStringDisplay == null) return;
+
+            if (sender is RadioButton clickedButton)
+            {
+                if (clickedButton.Tag != null)
+                {
+                    tbStringDisplay.Text = clickedButton.Tag.ToString();
+                }
+            }
+        }
+
+       
     }
 }

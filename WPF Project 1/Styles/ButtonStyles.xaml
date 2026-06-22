@@ -72,6 +72,59 @@
         </Setter>
     </Style>
 
+    <Style x:Key="GuitarStringButton" TargetType="RadioButton">
+        <!--<Setter Property="Height" Value="50px"/>-->
+        <!--<Setter Property="Foreground" Value="white"/>-->
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Path Data="M 30,20 L 85,15 Q 95,50 85,85 L 30,80 Q 25,65 10,50 Q 25,35 30,20 Z"
+                    Fill="#95000000" Stretch="Uniform" x:Name="btnBorder"/>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="btnBorder" Property="Fill" Value="#80000000"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="btnBorder" Property="Fill" Value="white"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="btnBorder" Property="Fill" Value="white"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SoundStatusTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Text" Value="ОЧІКУВАННЯ..."/>
+        <Setter Property="Foreground" Value="Gray"/>
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding CurrentTuneState}" Value="TooLow">
+                <Setter Property="Text" Value="ТРОХИ НИЖЧЕ"/>
+                <Setter Property="Foreground" Value="#FF4757"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding CurrentTuneState}" Value="TooHigh">
+                <Setter Property="Text" Value="ТРОХИ ВИЩЕ"/>
+                <Setter Property="Foreground" Value="#FF4757"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding CurrentTuneState}" Value="Perfect">
+                <Setter Property="Text" Value="ІДЕАЛЬНО!"/>
+                <Setter Property="Foreground" Value="#39FF14"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+ 
 
 
 </ResourceDictionary>
