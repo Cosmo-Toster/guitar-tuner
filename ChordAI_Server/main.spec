@@ -1,12 +1,17 @@
 # -*- mode: python ; coding: utf-8 -*-
+from PyInstaller.utils.hooks import copy_metadata
+
+datas = []
+datas += copy_metadata('fastapi')
+datas += copy_metadata('pydantic')
 
 
 a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[],
-    hiddenimports=[],
+    datas=datas,
+    hiddenimports=['sklearn', 'sklearn.ensemble._forest', 'sklearn.tree._utils'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
