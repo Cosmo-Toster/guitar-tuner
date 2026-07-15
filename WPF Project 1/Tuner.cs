@@ -8,14 +8,46 @@ using System.Threading.Tasks;
 
 namespace WPF_Project_1
 {
+    public enum AnalyzerMode
+    {
+        Tuner,
+        ChordRecognition
+    }
     public class Tuner
     {
         private WaveInEvent _waveIn;
 
-        static readonly string[] NoteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+      
+
+        public bool IsRecordingActive => _waveIn != null;
+
+        public int SelectedDeviceNumber { get; set; } = 0;
 
         public event EventHandler<float> ChangedFrequency;
 
+        public event EventHandler<float[]> AudioChunkReady;
+
+        public AnalyzerMode CurrentMode { get; set; } = AnalyzerMode.Tuner;
+
+        public List<string> GetAvailableMicrophones()
+        {
+            var devices = new List<string>();
+            for (int i = 0; i < WaveInEvent.DeviceCount; i++)
+            {
+                devices.Add(WaveInEvent.GetCapabilities(i).ProductName);
+            }
+            return devices;
+        }
+
+        public void RestartRecording()
+        {
+          
+            if (_waveIn != null)
+            {
+                StopGenerating();
+                StartGenerating();
+            }
+        }
 
         public void StartGenerating()
         {
@@ -23,16 +55,19 @@ namespace WPF_Project_1
             try
             {
                 _waveIn = new WaveInEvent();
-                _waveIn.DeviceNumber = 0;
-                _waveIn.WaveFormat = new WaveFormat(44100, 16, 1);
+                _waveIn.DeviceNumber = SelectedDeviceNumber;
+                _waveIn.WaveFormat = new WaveFormat(48000, 16, 1);
+                _waveIn.BufferMilliseconds = 200;
                 _waveIn.DataAvailable += OnDataAvailable;
                 _waveIn.StartRecording();
-                Debug.WriteLine($"ЗАпис почато");
+
+                
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Помилка: {ex.Message}");
             }
+
         }
 
         public void StopGenerating()
@@ -40,10 +75,10 @@ namespace WPF_Project_1
             if (_waveIn != null)
             {
                 _waveIn.StopRecording();
-                _waveIn.DataAvailable -= OnDataAvailable; // Відписуємося
-                _waveIn.Dispose(); // Звільняємо мікрофон для інших програм
+                _waveIn.DataAvailable -= OnDataAvailable; 
+                _waveIn.Dispose();
                 _waveIn = null;
-                Debug.WriteLine("Запис зупинено");
+        
             }
         }
 
@@ -62,20 +97,36 @@ namespace WPF_Project_1
 
             float rms = (float)Math.Sqrt(sumOfSquares / sampleCount);
 
-            if (rms < 0.01f)
+            if (rms < 0.008f)
             {
-                Debug.Write("\rОчікування звуку...".PadRight(40));
                 return;
             }
 
+<<<<<<< HEAD
+            if (CurrentMode == AnalyzerMode.Tuner)
+            {
+                float frequency = FindFundamentalFrequency(samples, 48000);
+                if (frequency > 0)
+                {
+                    ChangedFrequency?.Invoke(this, frequency);
+                }
+            }
+            else if (CurrentMode == AnalyzerMode.ChordRecognition)
+            {
+                AudioChunkReady?.Invoke(this, samples);
+            }
+=======
+            
             float frequency = FindFundamentalFrequency(samples, 44100);
 
-            if (frequency > 60 && frequency < 1200)
-            {
-                string note = GetNoteName(frequency);
-                Debug.Write($"\rЗвучить: [ {note} ]  Частота: {frequency:0.0} Гц".PadRight(40));
+            //if (frequency > 60 && frequency < 1200)
+            //{/
+                //string note = GetNoteName(frequency);
+                //Debug.Write($"\rЗвучить: [ {note} ]  Частота: {frequency:0.0} Гц".PadRight(40));
                 ChangedFrequency?.Invoke(this, frequency);
-            }
+
+            //}
+>>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
         }
 
         static float FindFundamentalFrequency(float[] samples, int sampleRate)
@@ -103,20 +154,11 @@ namespace WPF_Project_1
 
             if (bestLag == 0) return 0;
 
-            return (float)sampleRate / bestLag;
+
+            return (float)Math.Round(((float)sampleRate / bestLag),2);
+            
         }
 
-        static string GetNoteName(float frequency)
-        {
-            int pitch = (int)Math.Round(12.0 * Math.Log2(frequency / 440.0) + 69.0);
-
-            if (pitch < 0) return "Н/Д";
-
-            string noteName = NoteNames[pitch % 12];
-
-            int octave = (pitch / 12) - 1;
-
-            return $"{noteName}{octave}";
-        }
+      
     }
 }

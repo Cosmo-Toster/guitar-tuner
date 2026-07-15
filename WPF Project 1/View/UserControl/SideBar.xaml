@@ -10,9 +10,9 @@
 
         
         <StackPanel>
-            <Button Style="{StaticResource SidePanelButtonStyle}" Content="ТЮНЕР"  />
-            <Button Style="{StaticResource SidePanelButtonStyle}" Content="TUNA" />
-            <Button Style="{StaticResource SidePanelButtonStyle}" Content="A_A_A" />
+            <Button Style="{StaticResource SidePanelButtonStyle}" Content="ТЮНЕР"  Command="{Binding ShowTunerPageCommand}"/>
+            <Button Style="{StaticResource SidePanelButtonStyle}" Content="АКОРДИ" Command="{Binding ShowChordsPageCommand}"/>
+            <Button Style="{StaticResource SidePanelButtonStyle}" Content="НАЛАШТУВАННЯ" Command="{Binding ShowSettingsPageCommand}" FontSize="22"/>
         </StackPanel>
     </Grid>
 </UserControl>

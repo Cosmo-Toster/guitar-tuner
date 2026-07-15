@@ -6,12 +6,15 @@
         xmlns:local="clr-namespace:WPF_Project_1"
         xmlns:userControls="clr-namespace:WPF_Project_1.View.UserControl"
         xmlns:fa="clr-namespace:FontAwesome.Sharp;assembly=FontAwesome.Sharp"
-       
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
         mc:Ignorable="d"
+<<<<<<< HEAD
+        Title="Tuna Tuner" Height="720" Width="1080">
+
+
+=======
         Title="MainWindow" Height="720" Width="1080">
-    
-    
-    
+>>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
     <Grid>
         <Grid.RowDefinitions>
             <!--СМУГА 1 "Header" хедер сайту  -->
@@ -19,11 +22,26 @@
             <!--СМУГА 2 Головна частина сайту  -->
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <!-- Градієнтний фон ПОЧАТОК -->
+        <Viewbox Stretch="UniformToFill" ClipToBounds="True" Grid.Row="1">
+            <Rectangle   Width="1000" Height="1000">
+                <Rectangle.Fill>
+                    <RadialGradientBrush Center="0.5,0.5" RadiusX="0.7" RadiusY="0.7">
+                        <GradientStop Color="#4e5d73"
+        Offset="0"/>
+                        <GradientStop Color="#0F172A"
+        Offset="1"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Viewbox>
+        <!-- Градієнтний фон КІНЕЦЬ -->
         
         <!--Контент хедера  ПОЧАТОК-->
         <userControls:MenuBar/>
         <!--Контент хедера  КІНЕЦЬ-->
 
+     
         <!--Контент робочої частини  ПОЧАТОК-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -32,18 +50,7 @@
                 <!--КОЛОНКА 2 Робоча площина  -->
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <!-- Градієнтний фон ПОЧАТОК -->
-            <Rectangle Grid.ColumnSpan="2">
-                <Rectangle.Fill>
-                    <RadialGradientBrush Center="0.83,0.4" RadiusX="0.9" RadiusY="0.7">
-                        <GradientStop Color="#334155"
-                Offset="0"/>
-                        <GradientStop Color="#0F172A"
-                Offset="1"/>
-                    </RadialGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
-            <!-- Градієнтний фон КІНЕЦЬ -->
+            
 
             <!-- Бокове меню ПОЧАТОК -->
             <Border Background="#80000000" Panel.ZIndex="1" Width="200" HorizontalAlignment="left">
@@ -134,7 +141,12 @@
             <!-- Робочі юзер-контроли  ПОЧАТОК-->
             
             <!-- Робочі юзер-контроли  КІНЕЦЬ-->
-            <userControls:TunerPage Grid.Column="1"/>
+<<<<<<< HEAD
+            <!--<userControls:TunerPage Grid.Column="1" />-->
+            <ContentControl Name="MainContent" Grid.Column="1" Content="{Binding CurrentViewModel}" />
+=======
+            <userControls:TunerPage Grid.Column="1" />
+>>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
         </Grid>
         <!--Контент робочої частини КІНЕЦЬ-->
         

@@ -11,6 +11,10 @@
 
   <ItemGroup>
     <None Remove="Assets\Icons\fish.png" />
+    <None Remove="Assets\Icons\guitar-deck-cutout.png" />
+    <None Remove="Assets\Icons\guitar-deck-cutout2.png" />
+    <None Remove="Assets\Icons\guitar-deck-cutout3.png" />
+    <None Remove="Assets\Icons\guitar-deck.png" />
     <None Remove="Assets\Icons\guitar.png" />
     <None Remove="Assets\Icons\next.png" />
     <None Remove="Assets\Icons\right-arrow.png" />
@@ -19,12 +23,17 @@
   <ItemGroup>
     <PackageReference Include="FftSharp" Version="2.2.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <PackageReference Include="NAudio" Version="2.3.0" />
     <PackageReference Include="NAudio.Lame" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\Icons\fish.png" />
+    <Resource Include="Assets\Icons\guitar-deck-cutout.png" />
+    <Resource Include="Assets\Icons\guitar-deck-cutout2.png" />
+    <Resource Include="Assets\Icons\guitar-deck-cutout3.png" />
+    <Resource Include="Assets\Icons\guitar-deck.png" />
     <Resource Include="Assets\Icons\guitar.png" />
     <Resource Include="Assets\Icons\next.png" />
     <Resource Include="Assets\Icons\right-arrow.png" />
