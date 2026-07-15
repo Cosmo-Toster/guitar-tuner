@@ -99,7 +99,6 @@
         </Setter>
     </Style>
 
-<<<<<<< HEAD
     <Style x:Key="TunerTurnOnButton" TargetType="Button">
         <Setter Property="Height" Value="40"/>
         <Setter Property="Width" Value="150"/>
@@ -128,8 +127,7 @@
         </Style.Triggers>
     </Style>
 
-=======
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
+
     <Style x:Key="SoundStatusTextBlockStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
@@ -154,7 +152,6 @@
         </Style.Triggers>
     </Style>
 
-<<<<<<< HEAD
     <Style x:Key="TunerChangeToAutoModeButton" TargetType="Button">
         <Setter Property="Height" Value="45"/>
         <Setter Property="Width" Value="70"/>
@@ -224,9 +221,7 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
-=======
- 
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
+
 
 
 </ResourceDictionary>

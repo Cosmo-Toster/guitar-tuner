@@ -102,7 +102,7 @@ namespace WPF_Project_1
                 return;
             }
 
-<<<<<<< HEAD
+
             if (CurrentMode == AnalyzerMode.Tuner)
             {
                 float frequency = FindFundamentalFrequency(samples, 48000);
@@ -115,18 +115,7 @@ namespace WPF_Project_1
             {
                 AudioChunkReady?.Invoke(this, samples);
             }
-=======
-            
-            float frequency = FindFundamentalFrequency(samples, 44100);
 
-            //if (frequency > 60 && frequency < 1200)
-            //{/
-                //string note = GetNoteName(frequency);
-                //Debug.Write($"\rЗвучить: [ {note} ]  Частота: {frequency:0.0} Гц".PadRight(40));
-                ChangedFrequency?.Invoke(this, frequency);
-
-            //}
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
         }
 
         static float FindFundamentalFrequency(float[] samples, int sampleRate)

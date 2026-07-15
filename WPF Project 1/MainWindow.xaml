@@ -8,13 +8,11 @@
         xmlns:fa="clr-namespace:FontAwesome.Sharp;assembly=FontAwesome.Sharp"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         mc:Ignorable="d"
-<<<<<<< HEAD
         Title="Tuna Tuner" Height="720" Width="1080">
 
 
-=======
-        Title="MainWindow" Height="720" Width="1080">
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
+
+       
     <Grid>
         <Grid.RowDefinitions>
             <!--СМУГА 1 "Header" хедер сайту  -->
@@ -141,12 +139,9 @@
             <!-- Робочі юзер-контроли  ПОЧАТОК-->
             
             <!-- Робочі юзер-контроли  КІНЕЦЬ-->
-<<<<<<< HEAD
+
             <!--<userControls:TunerPage Grid.Column="1" />-->
             <ContentControl Name="MainContent" Grid.Column="1" Content="{Binding CurrentViewModel}" />
-=======
-            <userControls:TunerPage Grid.Column="1" />
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
         </Grid>
         <!--Контент робочої частини КІНЕЦЬ-->
         

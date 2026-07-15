@@ -9,11 +9,8 @@ namespace WPF_Project_1
 {
     class TunerViewModel : INotifyPropertyChanged
     {
-<<<<<<< HEAD
         private Tuner _analyzer;
-=======
-        private Tuner _tuner;
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
+
 
         private float _sliderPosition;
 
@@ -59,7 +56,6 @@ namespace WPF_Project_1
             set { _targetFrequency = value;
                 OnPropertyChanged();
             }
-<<<<<<< HEAD
         }
 
         private float _centsDeviation;
@@ -120,48 +116,14 @@ namespace WPF_Project_1
     { "E4 (1)", 329.63f }
 };
 
-=======
-        }
 
-        private float _centsDeviation;
-
-        public float CentsDeviation
-        {
-            get { return _centsDeviation; }
-            set { _centsDeviation = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private bool  _isRecording;
-
-        public bool IsRecording
-        {
-            get { return _isRecording; }
-            set { _isRecording = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private TuneStatus _currentTuneState = TuneStatus.Waiting;
-        public TuneStatus CurrentTuneState
-        {
-            get => _currentTuneState;
-            set
-            {
-                _currentTuneState = value;
-                OnPropertyChanged();
-            }
-        }
-
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-<<<<<<< HEAD
+
         public TunerViewModel(Tuner sharedAnalyzer)
         {
 
@@ -178,18 +140,7 @@ namespace WPF_Project_1
             ToggleTunerCommand = new RelayCommand(() => ExecuteToggleTuner(null));
             SelectStringCommand = new RelayCommand<string>(ExecuteSelectedString);
             IsRecording = _analyzer.IsRecordingActive;
-=======
-        public TunerViewModel()
-        {
 
-            _tuner = new Tuner();
-            _tuner.ChangedFrequency += OnTunerChangedFrequency;
-
-            _tuner.ChangedFrequency += LogicModel_FrequencyGenerated;
-
-            ToggleTunerCommand = new RelayCommand(() => ExecuteToggleTuner(null));
-            SelectStringCommand = new RelayCommand<string>(ExecuteSelectedString);
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
         }
         private void LogicModel_FrequencyGenerated(object sender, float generatedNumber)
         {
@@ -199,17 +150,14 @@ namespace WPF_Project_1
         public ICommand ToggleTunerCommand { get; }
         public ICommand SelectStringCommand { get; }
 
-<<<<<<< HEAD
+
         public ICommand SetAutoModeCommand { get; }
         public ICommand SetManualModeCommand { get; }
 
         private void ExecuteSelectedString(string data)
         {
             IsAutoMode = false;
-=======
-        private void ExecuteSelectedString(string data)
-        {
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
+
             var parts = data.Split('|');
             if (parts.Length == 2)
             {
@@ -223,28 +171,24 @@ namespace WPF_Project_1
         {
             if (IsRecording)
             {
-<<<<<<< HEAD
+
                 _analyzer.StopGenerating();
-=======
-                _tuner.StopGenerating();
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
+
                 IsRecording = false;
                 SliderPosition = 0; 
             }
             else
             {
-<<<<<<< HEAD
+
                 _analyzer.StartGenerating();
-=======
-                _tuner.StartGenerating();
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
+
                 IsRecording = true;
             }
         }
 
         public void UpdatePitch(float measuredHz)
         {
-<<<<<<< HEAD
+
             if (IsAutoMode && CurrentFrequency > 0)
             {
                 var closestString = _standardStrings
@@ -256,28 +200,19 @@ namespace WPF_Project_1
                 TargetFrequency = closestString.Value;
             }
 
-=======
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
+
             if (measuredHz <= 0 || TargetFrequency <= 0)
                 return;
             double cents = 1200.0 * Math.Log(measuredHz / TargetFrequency, 2);
             cents = Math.Clamp(cents, -500, 500);
             double visualMultiplier = 0.46;
 
-<<<<<<< HEAD
+
             if(cents < -25) CurrentTuneState = TuneStatus.TooLow;
             else if (cents > 25) CurrentTuneState = TuneStatus.TooHigh;
             else CurrentTuneState = TuneStatus.Perfect;
 
-=======
-            if(cents < -5) CurrentTuneState = TuneStatus.TooLow;
-            else if (cents > 5) CurrentTuneState = TuneStatus.TooHigh;
-            else CurrentTuneState = TuneStatus.Perfect;
 
-
-            //float targetPixels = (float)(cents * visualMultiplier);
-            //SliderPosition += (float)((targetPixels - SliderPosition) * 0.2);
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
             SliderPosition = (float)(cents * visualMultiplier);
         }
 
@@ -289,7 +224,7 @@ namespace WPF_Project_1
                 UpdatePitch(frequency);
         }
 
-<<<<<<< HEAD
+
         public void Cleanup()
         {
 
@@ -299,9 +234,7 @@ namespace WPF_Project_1
                 _analyzer.ChangedFrequency -= LogicModel_FrequencyGenerated;
             }
         }
-=======
 
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
     }
 
     public enum TuneStatus

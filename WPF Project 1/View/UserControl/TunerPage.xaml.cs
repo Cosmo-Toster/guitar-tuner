@@ -35,7 +35,7 @@ namespace WPF_Project_1.View.UserControl
             }
         }
 
-<<<<<<< HEAD
+
         private void TunerPage_Unloaded(object sender, RoutedEventArgs e)
         {
             if (this.DataContext is TunerViewModel vm)
@@ -45,8 +45,5 @@ namespace WPF_Project_1.View.UserControl
         }
 
 
-=======
-       
->>>>>>> 6ab6927727a28b4fc7c6abe5bd94786c279c3203
     }
 }
